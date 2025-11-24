@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import MovieCard from "../component/MovieCard"
 import '../css/Home.css'
-import { getPopularMovies } from "../services/api";
+import { getPopularMovies, searchMovies } from "../services/api";
 
 export default function Home() {
 
@@ -19,7 +19,6 @@ export default function Home() {
                 const popularMovies = await getPopularMovies();
                 setMovies(popularMovies);
                 console.log('your movies is ', popularMovies);
-
             } catch (error) {
                 console.log(error);
                 setError("Failed to load popular movies.");
@@ -93,15 +92,15 @@ export default function Home() {
         if (loading) return;
 
         setLoading(true);
-        try{
+        try {
             const searchResults = await searchMovies(searchTerm);
             setMovies(searchResults);
             setError(null);
         }
-        catch(err){
+        catch (err) {
             console.error(err);
             setError("An error occurred while searching. Please try again.");
-        }finally{
+        } finally {
             setLoading(false);
         }
 
