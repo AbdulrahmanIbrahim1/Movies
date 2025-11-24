@@ -1,0 +1,191 @@
+/* MovieDetails Container */
+.movie-details-container {
+  position: relative;
+  color: white;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+/* Backdrop */
+.movie-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50vh;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(40%);
+  z-index: -1;
+}
+
+/* Content Flex */
+.movie-details-content {
+  display: flex;
+  gap: 2rem;
+  margin-top: 20vh;
+  flex-wrap: wrap;
+}
+
+/* Poster Box */
+.poster-box {
+  position: relative;
+  min-width: 250px;
+  flex-shrink: 0; /* يمنع التصغير عند الشاشات الكبيرة */
+}
+
+.movie-poster {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+  height: auto;
+  object-fit: cover;
+}
+
+/* Favorite Button */
+.favorite-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 2rem;
+  background: rgba(0,0,0,0.6);
+  border-radius: 50%;
+  border: none;
+  color: white;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.favorite-btn.active {
+  color: #ff4757;
+}
+
+/* Movie Info */
+.movie-info {
+  flex: 1;
+  min-width: 300px;
+}
+
+/* Tagline */
+.tagline {
+  font-style: italic;
+  opacity: 0.7;
+  margin-bottom: 1rem;
+}
+
+/* External Link */
+.movie-link {
+  color: #00aaff;
+  text-decoration: underline;
+}
+
+/* Collection Box */
+.collection-box img {
+  width: 200px;
+  max-width: 100%;
+  margin-top: 0.5rem;
+  border-radius: 8px;
+}
+
+/* Trailer Box */
+.trailer-box iframe {
+  border-radius: 8px;
+  margin: 1rem 0;
+  width: 100%;
+  height: 300px;
+}
+
+/* Cast Box */
+.cast-box {
+  margin-top: 1rem;
+}
+
+.cast-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.cast-card {
+  width: 120px;
+  text-align: center;
+  flex: 1 0 100px; /* يجعلها مرنة */
+}
+
+.cast-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.character {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+/* Similar Movies */
+.similar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .movie-details-content {
+    margin-top: 15vh;
+  }
+
+  .poster-box {
+    min-width: 200px;
+  }
+
+  .trailer-box iframe {
+    height: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .movie-details-content {
+    flex-direction: column;
+    margin-top: 10vh;
+    gap: 1rem;
+  }
+
+  .movie-backdrop {
+    height: 30vh;
+  }
+
+  .poster-box {
+    min-width: 100%;
+  }
+
+  .collection-box img {
+    width: 100%;
+  }
+
+  .cast-card {
+    width: 90px;
+  }
+
+  .trailer-box iframe {
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .poster-box {
+    min-width: 100%;
+  }
+
+  .cast-card {
+    width: 70px;
+  }
+
+  .trailer-box iframe {
+    height: 180px;
+  }
+}
