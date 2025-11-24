@@ -3,7 +3,7 @@ import { useMovieContext } from '../contexts/MovieContext';
 import '../css/Favorites.css'
 function Favorites() {
     const { favorites } = useMovieContext();
-    if (favorites) return (
+    if (favorites && favorites.length > 0) return (
         <div className="favorites">
             <h2>Your Favorite Movies</h2>
             <div className="movies-grid">

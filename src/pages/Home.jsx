@@ -13,6 +13,8 @@ export default function Home() {
 
     const [error, setError] = useState(null);
 
+    const [noResults, setNoResults] = useState(false);
+
     useEffect(() => {
         const loadPopularMovies = async () => {
             try {
@@ -96,6 +98,7 @@ export default function Home() {
             const searchResults = await searchMovies(searchTerm);
             setMovies(searchResults);
             setError(null);
+            setNoResults(searchResults.length === 0);
         }
         catch (err) {
             console.error(err);
@@ -114,7 +117,7 @@ export default function Home() {
                 <button type="submit" className="search-button">Search</button>
             </form>
             {error && <div className="error-message">{error}</div>}
-            {loading ? (<div className="loading">Loading...</div>) : (<div className="movies-grid">
+            {loading ? (<div className="loading">Loading...</div>) :noResults ? (<div>No results found</div>) : (<div className="movies-grid">
                 {movies.map(movie => (
                     <MovieCard key={movie.id} movie={movie} />
                 ))}
